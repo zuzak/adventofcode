@@ -20,7 +20,6 @@ int main(int argc, array(string) argv) {
 		houses |= (< (string)x + "," + (string)y >);
 	}
 
-	write((array)houses);
-	write("\n"+sizeof(houses) + "\n");
+	write(sizeof(houses) + "\n");
 
 }
