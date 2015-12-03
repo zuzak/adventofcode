@@ -9,7 +9,7 @@ int main(int argc, array(string) argv) {
 
 	array steps = argv[1] / 1;
 
-	multiset(mapping) houses = (< ({ 0, 0 }) >);
+	multiset(string) houses = (< "0,0" >);
 
 	foreach (steps, string step) {
 		if ( step == "^" ) x++;
@@ -17,7 +17,7 @@ int main(int argc, array(string) argv) {
 		if ( step == ">" ) y++;
 		if ( step == "<" ) y--;
 
-		houses |= (< {( x, y )} >);
+		houses |= (< (string)x + "," + (string)y >);
 	}
 
 	write(sizeof(houses) + "\n");
