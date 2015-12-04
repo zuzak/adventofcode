@@ -1,6 +1,8 @@
 #!/usr/bin/pike
 #pike 7.8
 
+import Stdio;
+
 int main(int argc, array(string) argv) {
 	array(string) files = get_dir(".");
 	int code = 0;
@@ -12,7 +14,12 @@ int main(int argc, array(string) argv) {
 		code += test(file + "b");
 	}
 
-	write("\n" + (int)code + " errors.\n");
+	write("\n" + (int)code + " errors.");
+	if ((int)code == 0) {
+		write(" Well done!\n");
+	} else {
+		write(" :'(\n");
+	}
 	return code;
 }
 
@@ -22,6 +29,12 @@ int test(string id) {
 	string number = id[..(sizeof(id)-2)];
 
 	string dir = number;
+
+	if (!exist(dir + "/dat" + part + ".txt")) {
+		// probably haven't done part B yet
+		write("SKIPPED");
+		return 0; // pretend to succeed
+	}
 
 	string corpus = Stdio.File(dir + "/dat" + part + ".txt")->read();
 
