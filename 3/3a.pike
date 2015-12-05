@@ -2,7 +2,7 @@
 #pike 7.8
 
 int main(int argc, array(string) argv) {
-	if ( argc != 2 ) return 64;
+	if (argc != 2) return 64;
 
 	int x = 0;
 	int y = 0;
@@ -12,14 +12,13 @@ int main(int argc, array(string) argv) {
 	multiset(string) houses = (< "0,0" >);
 
 	foreach (steps, string step) {
-		if ( step == "^" ) x++;
-		if ( step == "v" ) x--;
-		if ( step == ">" ) y++;
-		if ( step == "<" ) y--;
+		if (step == "^") x++;
+		if (step == "v") x--;
+		if (step == ">") y++;
+		if (step == "<") y--;
 
 		houses |= (< (string)x + "," + (string)y >);
 	}
 
 	write(sizeof(houses) + "\n");
-
 }

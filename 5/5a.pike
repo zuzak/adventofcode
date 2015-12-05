@@ -2,7 +2,7 @@
 #pike 7.8
 
 int main(int argc, array(string) argv) {
-	if ( argc != 2 ) return 64;
+	if (argc != 2) return 64;
 
 	array(string) lines = argv[1] / "\n";
 
@@ -17,7 +17,7 @@ int main(int argc, array(string) argv) {
 int compute(string str) {
 	array(string) blacklist = ({ "ab", "cd", "pq", "xy" });
 	foreach(blacklist, string badstr) {
-		if ( sizeof(str - badstr) < sizeof(str) ) return 0;
+		if (sizeof(str - badstr) < sizeof(str)) return 0;
 	}
 
 	string vowels = "aeiou";
@@ -31,7 +31,7 @@ int compute(string str) {
 	int double = 0;
 	foreach(str / 1, string char) {
 		j++;
-		if ( str[j..j] - str[j+1..j+1] == "" ) { // this is silly
+		if (str[j..j] - str[j+1..j+1] == "") { // this is silly
 			double = 1;
 			continue;
 		}
@@ -40,8 +40,3 @@ int compute(string str) {
 
 	return 1;
 }
-
-
-
-
-

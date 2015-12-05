@@ -2,7 +2,7 @@
 #pike 7.8
 
 int main(int argc, array(string) argv) {
-	if ( argc != 2 ) return 64;
+	if (argc != 2) return 64;
 
 	int sx = 0;
 	int sy = 0;
@@ -17,12 +17,12 @@ int main(int argc, array(string) argv) {
 	foreach (steps, string step) {
 		i++;
 		int x = 0; int y = 0;
-		if ( step == "^" ) x++;
-		if ( step == "v" ) x--;
-		if ( step == ">" ) y++;
-		if ( step == "<" ) y--;
+		if (step == "^") x++;
+		if (step == "v") x--;
+		if (step == ">") y++;
+		if (step == "<") y--;
 
-		if ( i % 2 == 0) {
+		if (i % 2 == 0) {
 			sx += x, sy += y;
 		} else {
 			rx += x, ry += y;
