@@ -1,4 +1,6 @@
-sudo: true
-before_install: sudo apt-get install pike7.8
+sudo: required
+before_install:
+    - sudo apt-get update
+    - sudo apt-get install pike7.8
 script: pike test.pike
 
