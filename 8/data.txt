@@ -1,5 +1,5 @@
 # not real test cases!
 2 ""
 2 "abc"
-3 "aaa/"aaa"
-5 "/x27"
+3 "aaa\"aaa"
+5 "\x27"
