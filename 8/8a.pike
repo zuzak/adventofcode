@@ -1,5 +1,10 @@
 #!/usr/bin/pike
 #pike 7.8
+/**
+ * http://adventofcode.com/day/8
+ *
+ * Un-escape \\, \" and \x, then return the difference in string length
+ */
 
 /**
  * This code works fine if you replace all the \ with /.
