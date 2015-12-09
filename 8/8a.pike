@@ -22,13 +22,13 @@ int main(int argc, array(string) argv) {
 		//parsed = parsed[1..(sizeof(parsed)-2)];
 
 		// backslash and quotes
-		parsed = parsed - "\\"; // \\
-		parsed = parsed - "\\\""; // \"
+		parsed = parsed - "//"; // \\
+		parsed = parsed - "/\""; // \"
 
 
 		int escapeCount = (sizeof(line) - sizeof(parsed))/2;
 
-		string hexesc = parsed - "\\x"; // \x
+		string hexesc = parsed - "/x"; // \x
 		escapeCount += sizeof(parsed) - sizeof(hexesc);
 		escapeCount += ((sizeof(parsed) - sizeof(hexesc))/2);
 
