@@ -55,7 +55,10 @@ int test(string id) {
 	foreach(data, string datum) {
 		/* parse next line */
 		array(string) str = datum / " ";
-		if ( sizeof(str) != 2 ) continue; /* something went wrong! */
+		if ( sizeof(str) != 2 ) {
+			write("!");
+			continue; /* something went wrong! */
+		}
 		string answer = str[0];
 		string question = str[1];
 
@@ -63,6 +66,11 @@ int test(string id) {
 			/* multi-line input */
 			of = 1;
 			overflow += question + "\n";
+		} else if ( answer == "!" ) {
+			// skip the rest
+			write("ABORTED");
+			exit(64);
+			return 0;
 		} else if ( answer == "#" ) {
 			// comment
 			continue;
