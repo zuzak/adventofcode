@@ -40,6 +40,10 @@ int test(string id) {
 
 	string dir = number;
 
+	if ( number[0..0] == "0" ) {
+		number = number[1..];
+	}
+	id = number + part;
 	string suffix = "";
 
 	if (!exist(dir + "/dat" + part + ".txt")) {
