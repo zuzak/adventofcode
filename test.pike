@@ -15,6 +15,7 @@ import Stdio;
 
 int main(int argc, array(string) argv) {
 	array(string) files = get_dir(".");
+	sort(files);
 	int code = 0;
 
 	write("Running test suite...");
