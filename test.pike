@@ -72,13 +72,29 @@ int test(string id) {
 			of = 0;
 		}
 
-		mapping res = Process.run("pike " + dir + "/" + id + ".pike '" + question + "'");
+		mapping res;
+		if ( exist(dir + "/" + id + ".pike") ) {
+			res = Process.run("pike " + dir + "/" + id + ".pike '" + question + "'");
+		} else if ( exist( dir + "/" + id + ".py" ) ) {
+			res = Process.run("./" + dir + "/" + id + ".py '" + question + "'");
+		} else {
+			write("!"); // test suite can't cope :(
+			code = 1;
+		}
+
 
 		string response = res["stdout"];
-		if ( response == (answer+"\n") ) {
+		if ( res["exitcode"] != 0 ) {
+			// error
+			code = 1;
+			write("!");
+		} else if ( response == (answer+"\n") ) {
+			// correct
 			write(".");
 		} else {
+			// wrong
 			code = 1;
+			write(response);
 			write("X");
 		}
 	}
