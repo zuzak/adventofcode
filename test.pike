@@ -40,6 +40,8 @@ int test(string id) {
 
 	string dir = number;
 
+	string suffix = "";
+
 	if (!exist(dir + "/dat" + part + ".txt")) {
 		// probably haven't done part B yet
 		write("SKIPPED");
@@ -77,6 +79,7 @@ int test(string id) {
 			res = Process.run("pike " + dir + "/" + id + ".pike '" + question + "'");
 		} else if ( exist( dir + "/" + id + ".py" ) ) {
 			res = Process.run("./" + dir + "/" + id + ".py '" + question + "'");
+			suffix = " (python)";
 		} else {
 			write("!"); // test suite can't cope :(
 			code = 1;
@@ -99,9 +102,9 @@ int test(string id) {
 		}
 	}
 	if ( code == 0 ) {
-		write("OK");
+		write("OK" + suffix);
 	} else {
-		write("NO");
+		write("NO" + suffix);
 	}
 	return code;
 }
