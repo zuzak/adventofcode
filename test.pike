@@ -102,7 +102,6 @@ int test(string id) {
 		} else {
 			// wrong
 			code = 1;
-			write(response);
 			write("X");
 		}
 	}
