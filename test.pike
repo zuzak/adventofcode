@@ -62,21 +62,26 @@ int test(string id) {
 	foreach(data, string datum) {
 		/* parse next line */
 		array(string) str = datum / " ";
-		if ( sizeof(str) != 2 ) continue; /* something went wrong! */
 		string answer = str[0];
-		string question = str[1];
+		string question = str[1..] * " ";
 
 		if ( answer == "-" ) {
 			/* multi-line input */
 			of = 1;
-			overflow += question + "\n";
+			overflow = question + "\n" + overflow;
+			continue;
 		} else if ( answer == "#" ) {
 			// comment
 			continue;
 		} else if ( of == 1 ) {
 			question = question + "\n" + overflow;
+			question = String.trim_all_whites(question);
 			overflow = "";
 			of = 0;
+		}
+
+		if (question == "") {
+			continue;
 		}
 
 		mapping res;
@@ -100,6 +105,7 @@ int test(string id) {
 			// correct
 			write(".");
 		} else {
+			write("\nEXPECTED: " + answer + "\nRECEIVED: "+ response+"\n");
 			// wrong
 			code = 1;
 			write("X");
